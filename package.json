@@ -1,0 +1,24 @@
+{
+  "name": "portofolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://ferryyudhitama.github.io/portofolio",
+  "dependencies": {
+    "gh-pages": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "gh-pages -d dist"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferryyudhitama/portofolio.git"
+  },
+  "author": "Ferry Yudhitama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferryyudhitama/portofolio/issues"
+  },
+  "homepage": "https://github.com/ferryyudhitama/portofolio#readme"
+}
