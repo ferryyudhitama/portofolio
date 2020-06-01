@@ -12,6 +12,13 @@
 
 /* start navigation */ 
 
+.fa-whatsapp  {
+    color:#fff;
+    background:
+    linear-gradient(#25d366,#25d366)5px 84%/15px 15px no-repeat,
+    radial-gradient(#25d366 59%,transparent 0);
+  }
+
 .header_area .main-menu .navbar .navbar-brand{
     padding: 0 2rem 0 5rem;
 }
