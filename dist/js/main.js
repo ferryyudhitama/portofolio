@@ -1,33 +1,78 @@
-// Select DOM Items
-const menuBtn = document.querySelector('.menu-btn');
-const menu = document.querySelector('.menu');
-const menuNav = document.querySelector('.menu-nav');
-const menuBranding = document.querySelector('.menu-branding');
-const navItems = document.querySelectorAll('.nav-item');
+$(document).ready(function () {
 
-// Set Initial State Of Menu
-let showMenu = false;
 
-menuBtn.addEventListener('click', toggleMenu);
+    let $btns = $('.project-area .button-group button');
 
-function toggleMenu() {
-  if (!showMenu) {
-    menuBtn.classList.add('close');
-    menu.classList.add('show');
-    menuNav.classList.add('show');
-    menuBranding.classList.add('show');
-    navItems.forEach(item => item.classList.add('show'));
+    // Smoth Scroll
 
-    // Set Menu State
-    showMenu = true;
-  } else {
-    menuBtn.classList.remove('close');
-    menu.classList.remove('show');
-    menuNav.classList.remove('show');
-    menuBranding.classList.remove('show');
-    navItems.forEach(item => item.classList.remove('show'));
+    $('.nav-item a').on('click', function (e) {
+    if (this.hash !== '') {
+        e.preventDefault();
 
-    // Set Menu State
-    showMenu = false;
-  }
-}
+        const hash = this.hash;
+
+        $('html, body')
+        .animate({
+            scrollTop: $(hash).offset().top - 100
+        },800);
+    }
+    });
+
+
+    $btns.click(function (e) {
+
+        $('.project-area .button-group button').removeClass('active');
+        e.target.classList.add('active');
+
+        let selector = $(e.target).attr('data-filter');
+        $('.project-area .grid').isotope({
+            filter: selector
+        });
+
+        return false;
+    })
+
+    $('.project-area .button-group #btn1').trigger('click');
+
+    $('.project-area .grid .test-popup-link').magnificPopup({
+        type: 'image',
+        gallery: { enabled: true }
+    });
+
+
+    // Owl-carousel
+
+    $('.site-main .about-area .owl-carousel').owlCarousel({
+        loop: true,
+        autoplay: true,
+        dots: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            560: {
+                items: 2
+            }
+        }
+    })
+
+    // sticky navigation menu
+
+    let nav_offset_top = $('.header_area').height() + 50;
+
+    function navbarFixed() {
+        if ($('.header_area').length) {
+            $(window).scroll(function () {
+                let scroll = $(window).scrollTop();
+                if (scroll >= nav_offset_top) {
+                    $('.header_area .main-menu').addClass('navbar_fixed');
+                } else {
+                    $('.header_area .main-menu').removeClass('navbar_fixed');
+                }
+            })
+        }
+    }
+
+    navbarFixed();
+
+});
