@@ -34,27 +34,88 @@ const sr = ScrollReveal({
 });
 
 /*SCROLL HOME*/
-sr.reveal('.home__title',{}); 
-sr.reveal('.button',{delay: 200}); 
-sr.reveal('.home__img',{delay: 400}); 
-sr.reveal('.home__social-icon',{ interval: 200}); 
+sr.reveal('.home__title',{reset: false}); 
+sr.reveal('.button',{delay: 200, reset: false}); 
+sr.reveal('.home__img',{delay: 400 , reset: false}); 
+sr.reveal('.home__social-icon',{ interval: 200 , reset: false}); 
 
 /*SCROLL ABOUT*/
-sr.reveal('.about__img',{}); 
-sr.reveal('.about__subtitle',{delay: 400}); 
-sr.reveal('.about__text',{delay: 400}); 
+sr.reveal('.about__img',{reset: false}); 
+sr.reveal('.about__subtitle',{delay: 400 , reset: false}); 
+sr.reveal('.about__text',{delay: 400, reset: false}); 
 
 /*SCROLL SKILLS*/
-sr.reveal('.skills__subtitle',{}); 
-sr.reveal('.skills__text',{}); 
-sr.reveal('.skills__data',{interval: 200}); 
-sr.reveal('.skills__img',{delay: 600});
+sr.reveal('.skills__subtitle',{reset: false}); 
+sr.reveal('.skills__text',{reset: false}); 
+sr.reveal('.skills__data',{interval: 200, reset: false}); 
+sr.reveal('.skills__img',{delay: 600, reset: false});
 
 /*SCROLL WORK*/
-sr.reveal('.work__img',{interval: 200}); 
+sr.reveal('.work__img',{interval: 200, reset: false}); 
 
 /*SCROLL CONTACT*/
-sr.reveal('.contact__input',{interval: 200}); 
+sr.reveal('.contact__input',{interval: 200, reset: false}); 
+
+$(document).ready(function () {
+
+    $('#contact_form').validate({ 
+        rules: {
+            name: {
+                required: true,
+                minlength: 2
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            messages: {
+                required: true,
+            }
+        }
+    });
+
+    $("#contact_form").submit(function(e) {
+        e.preventDefault();
+        if($('#contact_form').valid()){
+            $('#submitbtn').prop( "disabled", true );
+            $('.loadingCircle').show();
+
+            var dataContact = {
+                "name" : $('#name').val(),
+                "email" : $('#email').val(),
+                "messages" : $('#messages').val()
+            }
+
+            
+            $.ajax({
+                url: "https://bookingku.com/wp-json/user/v3/portofolio",
+                method: "POST",
+                dataType: "JSON",
+                contentType: 'application/json',
+                data:   JSON.stringify(dataContact),
+                success: function (response) {
+                    $('.loadingCircle').hide();
+                    Swal.fire(
+                        'Thank You',
+                        'I will be in touch with you soon.',
+                        'success'
+                    );
+                    $('#submitbtn').prop( "disabled", true );
+                    $('#contact_form').trigger("reset");
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                    $('#submitbtn').prop( "disabled", false );
+                }
+            });
+
+
+        }
+    });
+
+
+
+});
 
 
 

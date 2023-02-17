@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/styles.css?v=32">
 
         <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
@@ -171,7 +171,7 @@
               
                   
                     <div class="work__img">
-                      <a href="https://dev.karmadevelopments.com/" target="_blank"><img src="https://bookingku.com/wp-content/uploads/2022/11/karma_develoments.jpg" alt=""></a>
+                      <a href="https://pt-touchwood.com/" target="_blank"><img src="https://bookingku.com/wp-content/uploads/2023/02/touchwood.jpg" alt=""></a>
                     </div>
                     <div class="work__img">
                       <a href="https://bookingku.com/" target="_blank"><img src="https://bookingku.com/wp-content/uploads/2022/11/bookingku.jpg" alt=""></a>
@@ -187,11 +187,23 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Submit" class="contact__button button w-100">
+                    <form id="contact_form" action="" class="contact__form">
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" placeholder="Name" class="contact__input">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="mail" name="email" id="email" placeholder="Email" class="contact__input">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="messages" id="messages" cols="0" rows="10" class="contact__input"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Submit" id="submitbtn" class="contact__button button w-100">
+                            <div class="loadingCircle"></div>
+                        </div>
                     </form>
                 </div>
             </section>
@@ -206,14 +218,19 @@
                 <a href="https://twitter.com/FerryYudhitama" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
                 <a href="https://github.com/ferryyudhitama" class="footer__icon"><i class='bx bxl-github' ></i></a>
             </div>
-            <p>&#169; 2022 copyright all right reserved</p>
+            <p>&#169; 2023 copyright all right reserved</p>
         </footer>
 
 
         <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
         <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
+        <script src="assets/js/main.js?v=21"></script>
     </body>
 </html>
