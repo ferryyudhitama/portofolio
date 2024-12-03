@@ -9,7 +9,7 @@
   },
   "author": "Ferry Yudhitama",
   "license": "MIT",
-  "dependencies": {
-    "gh-pages": "^3.0.0"
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
